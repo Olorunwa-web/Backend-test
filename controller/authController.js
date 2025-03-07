@@ -57,7 +57,7 @@ exports.signin = async (req, res, next) =>{
         }
 
         const token = jwt.sign({ id: user._id}, 'secretkey123' ,{
-            expiresIn: '24h'
+            expiresIn: '7d'
         })
 
         res.status(200).json({

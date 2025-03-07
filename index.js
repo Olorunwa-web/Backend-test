@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const connect = require('./db');
-// const userRoute = require('./routes/userRoute')
+const mongoose = require('mongoose')
+// const connect = require('./lib/db');
 const authRoute = require('./routes/auth')
 
 const app = express();
@@ -13,6 +13,18 @@ app.use (express.json())
 // API
 // app.use("/api/users", userRoute)
 app.use("/api/auth", authRoute)
+
+
+// 
+
+const MONGO = process.env.DB_URL || 'mongodb://localhost:27017/beta-house';
+
+mongoose
+    .connect(MONGO)
+    .then(()=> console.log('MongoDB connected successfully'))
+    .catch((error) => console.error('Failed to connect to MongoDB', error));
+
+
 
 
 app.use((err, res, req, next) => {
@@ -26,10 +38,11 @@ app.use((err, res, req, next) => {
 
 })
 
-
-const port = process.env.PORT || 8080;
+const port = 8080; 
 app.listen( port, () => console.log(`http://localhost:${port}`));
 
-connect();
+
+// connect();
+
 
 
