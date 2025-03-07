@@ -1,0 +1,15 @@
+const mongoose = require('mongoose')
+
+
+module.exports = async () =>{
+    try {
+        await mongoose.connect(process.env.DB_URL,{
+            dbName: "beta-house"
+        });
+        console.log("MongoDB connected successfully");
+    } catch (error) {
+        console.log(error.message);
+        process.exit(1)
+    }
+};
+
