@@ -17,10 +17,10 @@ app.use("/api/auth", authRoute)
 
 // 
 
-const MONGO = process.env.DB_URL;
+// const MONGO = process.env.DB_URL;
 
 mongoose
-    .connect(MONGO)
+    .connect('mongodb+srv://beta-house:beta-house@beta-house.fh1kb.mongodb.net/?retryWrites=true&w=majority&appName=beta-house')
     .then(()=> console.log('MongoDB connected successfully'))
     .catch((error) => console.error('Failed to connect to MongoDB', error));
 
