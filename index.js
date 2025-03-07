@@ -17,7 +17,7 @@ app.use("/api/auth", authRoute)
 
 // 
 
-const MONGO = process.env.DB_URL || 'mongodb://localhost:27017/beta-house';
+const MONGO = process.env.DB_URL;
 
 mongoose
     .connect(MONGO)
